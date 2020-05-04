@@ -59,30 +59,7 @@ exports.findByAgeAndProfession = (req, res) => {
 }
 
 exports.updateUser = (req, res) => {
-    var body = new Object();
-
-    if (req.body.FirstName) {
-        body.FirstName = req.body.FirstName;
-    }
-
-    if (req.body.LastName) {
-        body.LastName = req.body.LastName;
-    }
-
-    if (req.body.Profession) {
-        body.Profession = req.body.Profession;
-    }
-
-    if (req.body.Age) {
-        body.Age = req.body.Age;
-    }
-
-    models.Person.update({
-        FirstName: req.body.FirstName,
-        LastName: req.body.LastName,
-        Profession: req.body.Profession,
-        Age: req.body.Age
-    }, {
+    models.Person.update(req.body, {
         where: {
             id: req.params.id
         }
